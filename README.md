@@ -1,29 +1,5 @@
-# aurelia-promise-template-controller-sample
+# Aurelia loading skeleton with new promise template controller
 
-This project is bootstrapped by [aurelia/new](https://github.com/aurelia/new).
+Skeleton loading components provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
 
-## Start dev web server
-
-    npm start
-
-## Build the app in production mode
-
-    npm run build
-
-It builds all files to dist folder. To deploy to production server, copy all the `dist/*` files to production root folder.
-
-For example
-```
-dist/index.html
-dist/foo.12345.js
-```
-Copy to production root folder
-```
-root_folder/index.html
-root_folder/foo.12345.js
-```
-
-
-## Analyze webpack bundle
-
-    npm run analyze
+demo: [demo](https://aurelia.z6.web.core.windows.net/skeleton-loader/)
