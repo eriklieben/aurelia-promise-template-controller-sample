@@ -1,3 +1,5 @@
+<import from="./skeleton-loader.html"></import>
+
 <article>
     <main> 
         <h1>Aurelia loading skeleton with new promise template controller</h1> 
@@ -8,18 +10,12 @@
     </main>
 
     <aside>
+
         <h2>List of people that takes 2s to load</h2>
         <p>Show the loading skeleton when loading time is more than 300ms</p>
-        <div ref="readerslist" class="readerslist" promise.bind="profileDataPromise">
-            <template pending>
-                <div class="row pending" data-row-number.bind="i" repeat.for="i of [1,2,3]">
-                    <div class="avatar"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </template>
-            <template then.from-view="data" repeat.for="person of data">
-                <div class="row loaded" data-row-number.bind="i">
+        <skeleton-loader promise-value.bind="profileDataPromise" type="profile">      
+            <ul au-slot>
+                <li class="row profile loaded" repeat.for="person of items">
                     <img class="avatar" src.bind="person.profileImageUrl" />
                     <div class="line">
                         <strong>${person.name}</strong>
@@ -27,23 +23,15 @@
                     <div class="line">
                         <span>${person.description}</span>
                     </div>
-                </div>
-            </template>
-            <template catch.from-view="err">We're unable to display other readers at the moment.</template>
-        </div>
+                </li>
+            </ul>
+        </skeleton-loader>
 
         <h2>List of people that takes 200ms to load</h2>
         <p>Only show the loading skelethon when loading data takes more than 300ms; don't show a flash of the skeleton before that</p>
-        <div ref="readerslistQuick" class="readerslist" promise.bind="profileDataQuickPromise">
-            <template pending repeat.for="i of [1,2,3]">
-                <div class="row" data-row-number.bind="i">
-                    <div class="avatar"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            </template>
-            <template then.from-view="data" repeat.for="person of data">
-                <div class="row loaded" data-row-number.bind="i">
+        <skeleton-loader promise-value.bind="profileDataQuickPromise" type="profile">       
+            <template repeat.for="person of items" au-slot>
+                <div class="row profile loaded">
                     <img class="avatar" src.bind="person.profileImageUrl" />
                     <div class="line">
                         <strong>${person.name}</strong>
@@ -53,9 +41,31 @@
                     </div>
                 </div>
             </template>
-            <template catch.from-view="err">We're unable to display other readers at the moment.</template>
-        </div>
+        </skeleton-loader>
+
+        <h2>List of people that takes 2s to load with custom skeleton template</h2>
+        <p>Override the skeleton template with a custom one</p>
+        <skeleton-loader promise-value.bind="profileDataPromise">
+            <template au-slot="skeleton">
+                <div class="row profile pending">
+                    <div class="avatar red"></div>
+                    <div class="line"></div>
+                </div>
+            </template>
+
+            <template repeat.for="person of items" au-slot>
+                <div class="row profile loaded">
+                    <img class="avatar" src.bind="person.profileImageUrl" />
+                    <div class="line">
+                        <strong>${person.name}</strong>
+                    </div>
+                    <div class="line">
+                        <span>${person.description}</span>
+                    </div>
+                </div>
+            </template>
+        </skeleton-loader>
+
     </aside>
 </article>
-
 

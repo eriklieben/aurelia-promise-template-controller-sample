@@ -18,19 +18,19 @@ export class MyApp {
     await new Promise(resolve => setTimeout(() => { resolve(undefined) }, loadTimeMs));
     const elapsed = new Date().getTime() - start;
 
-    // fade out the div (loading skeleton), only if load time was > 300ms
-    if (elapsed >= 300) {
-      await div.animate([ 
-        { opacity: 1 }, 
-        { opacity: 0 }
-      ], { duration: 250 }).finished;
-    }
+    // // fade out the div (loading skeleton), only if load time was > 300ms
+    // if (elapsed >= 300) {
+    //   await div.animate([ 
+    //     { opacity: 1 }, 
+    //     { opacity: 0 }
+    //   ], { duration: 250 }).finished;
+    // }
 
-    // fade in the div (containing loaded content)
-    div.animate([
-      { opacity: 0 },
-      { opacity: 1 }
-    ], { duration: 250 });
+    // // fade in the div (containing loaded content)
+    // div.animate([
+    //   { opacity: 0 },
+    //   { opacity: 1 }
+    // ], { duration: 250 });
 
     return [
       new ProfileData ('https://randomuser.me/api/portraits/lego/5.jpg', 'Person 1', 'Developer'),

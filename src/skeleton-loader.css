@@ -1,0 +1,108 @@
+.list {
+    animation: fadeIn .3s;
+}
+
+.list .row {
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: min-content min-content;
+}
+
+.list .big-box-loader {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: #f1eddf;
+
+    height: 4rem;
+    width: 100%;
+    border-radius: .5rem;
+    margin: 8px;
+}
+
+.list .row.profile .avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 25%;
+    margin: 8px;
+    grid-column: 1;
+    grid-row: 1/3;
+    background: none;
+  }
+  
+.list .row.profile .line {
+    grid-column: 2;
+    width: 75%;
+    height: 16px;
+    margin-top: 10px;
+    border-radius: .3rem;
+    background: none;
+}
+
+.list .row.profile.pending .avatar, 
+.list .row.profile.pending .line {
+    background-color: #f1eddf;
+    cursor: progress;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .list .big-box-loader {
+        background-image: linear-gradient(90deg, #f1eddf 0px, #eae3cd 40px,	#f1eddf 80px);
+        background-size: 100%;
+        animation: shine-bar 3s infinite ease-out;
+        animation-delay: .3s;
+    }
+
+    .list .row.profile.pending .avatar, 
+    .list .row.profile.pending .line {
+      background-image: linear-gradient(90deg, #f1eddf 0px, #eae3cd 40px,	#f1eddf 80px);
+      background-size: 600px;
+      animation: shine-avatar 3s infinite ease-out;
+      animation-delay: .3s;
+    }
+}
+
+div.list ul {
+  padding-left: 0;
+}
+
+  
+/* first line smaller */
+.list .row.profile .avatar + .line {
+    margin-top: 11px;
+    width: 60%;
+}
+
+
+@keyframes shine-bar {
+    0% {
+        background-position: -50px;
+    }
+    40%, 100% {
+        background-position: 400px;
+    }
+}
+
+
+@keyframes shine-lines {
+  0% {
+    background-position: -100px;
+  }
+  40%, 100% {
+    background-position: 300px;
+  }
+}
+@keyframes shine-avatar {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 208px;
+  }
+} 
+  
+  
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    70%   { opacity: 0; }
+    100% { opacity: 1; }
+  }

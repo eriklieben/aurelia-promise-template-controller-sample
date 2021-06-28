@@ -1,0 +1,22 @@
+<bindable name="promiseValue"></bindable>
+<bindable name="type"></bindable>
+
+<div class="list" promise.bind="promiseValue">
+    <template pending repeat.for="i of [1,2,3]">
+        <au-slot name="skeleton">
+            <template switch.bind="type">
+                <div case="profile" class="row pending profile">
+                    <div class="avatar"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+
+                <div default-case class="row pending big-box-loader"></div>
+            </template>
+
+        </au-slot>
+    </template>
+
+    <au-slot then.from-view="items"></au-slot>
+    <template catch.from-view="err">We're unable to display other readers at the moment.</template>
+</div>
