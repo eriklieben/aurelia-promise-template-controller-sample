@@ -1,0 +1,58 @@
+<article>
+    <main> 
+        <h1>Aurelia loading skeleton with new promise template controller</h1> 
+        <p>skeleton loading components provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.</p>
+    </main>
+
+    <aside>
+        <h2>List of people that takes 2s to load</h2>
+        <p>Show the loading skeleton when loading time is more than 300ms</p>
+        <div ref="readerslist" class="readerslist" promise.bind="profileDataPromise">
+            <template pending repeat.for="i of [1,2,3]">
+                <div class="row" data-row-number.bind="i">
+                    <div class="avatar"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </template>
+            <template then.from-view="data" repeat.for="person of data">
+                <div class="row loaded" data-row-number.bind="i">
+                    <img class="avatar" src.bind="person.profileImageUrl" />
+                    <div class="line">
+                        <strong>${person.name}</strong>
+                    </div>
+                    <div class="line">
+                        <span>${person.description}</span>
+                    </div>
+                </div>
+            </template>
+            <template catch.from-view="err">We're unable to display other readers at the moment.</template>
+        </div>
+
+        <h2>List of people that takes 200ms to load</h2>
+        <p>Only show the loading skelethon when loading data takes more than 300ms</p>
+        <div ref="readerslistQuick" class="readerslist" promise.bind="profileDataQuickPromise">
+            <template pending repeat.for="i of [1,2,3]">
+                <div class="row" data-row-number.bind="i">
+                    <div class="avatar"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </template>
+            <template then.from-view="data" repeat.for="person of data">
+                <div class="row loaded" data-row-number.bind="i">
+                    <img class="avatar" src.bind="person.profileImageUrl" />
+                    <div class="line">
+                        <strong>${person.name}</strong>
+                    </div>
+                    <div class="line">
+                        <span>${person.description}</span>
+                    </div>
+                </div>
+            </template>
+            <template catch.from-view="err">We're unable to display other readers at the moment.</template>
+        </div>
+    </aside>
+</article>
+
+
