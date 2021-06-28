@@ -8,11 +8,11 @@ export class MyApp {
   public readerslistQuick: HTMLDivElement;
 
   public binding() {
-    this.profileDataPromise = this.getProfileDataAsync(2000);
-    this.profileDataQuickPromise = this.getProfileDataAsync(200);
+    this.profileDataPromise = this.getProfileDataAsync(2000, this.readerslist);
+    this.profileDataQuickPromise = this.getProfileDataAsync(200, this.readerslistQuick);
   }
 
-  private async getProfileDataAsync(loadTimeMs: number): Promise<any> {
+  private async getProfileDataAsync(loadTimeMs: number, div: HTMLDivElement): Promise<any> {
 
     const start = new Date().getTime();
     await new Promise(resolve => setTimeout(() => { resolve(undefined) }, loadTimeMs));
@@ -20,14 +20,14 @@ export class MyApp {
 
     if (elapsed >= 300) {
       // fade out the div (loading skeleton)
-      await this.readerslist.animate([ 
+      await div.animate([ 
         { opacity: 1 }, 
         { opacity: 0 }
       ], { duration: 250 }).finished;
     }
 
     // fade in the div (containing loaded content)
-    this.readerslist.animate([
+    div.animate([
       { opacity: 0 },
       { opacity: 1 }
     ], { duration: 250 });
