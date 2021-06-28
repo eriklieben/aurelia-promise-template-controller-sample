@@ -11,8 +11,8 @@
         <h2>List of people that takes 2s to load</h2>
         <p>Show the loading skeleton when loading time is more than 300ms</p>
         <div ref="readerslist" class="readerslist" promise.bind="profileDataPromise">
-            <template pending repeat.for="i of [1,2,3]">
-                <div class="row" data-row-number.bind="i">
+            <template pending>
+                <div class="row pending" data-row-number.bind="i" repeat.for="i of [1,2,3]">
                     <div class="avatar"></div>
                     <div class="line"></div>
                     <div class="line"></div>
