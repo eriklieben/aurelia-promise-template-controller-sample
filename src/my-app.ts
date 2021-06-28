@@ -1,5 +1,4 @@
 export class MyApp {
-  public message = 'Hello World!';
 
   public profileDataPromise: Promise<any>;
   public profileDataQuickPromise: Promise<any>;
@@ -14,12 +13,13 @@ export class MyApp {
 
   private async getProfileDataAsync(loadTimeMs: number, div: HTMLDivElement): Promise<any> {
 
+    // measure how long loading takes, and fake load
     const start = new Date().getTime();
     await new Promise(resolve => setTimeout(() => { resolve(undefined) }, loadTimeMs));
     const elapsed = new Date().getTime() - start;
 
+    // fade out the div (loading skeleton), only if load time was > 300ms
     if (elapsed >= 300) {
-      // fade out the div (loading skeleton)
       await div.animate([ 
         { opacity: 1 }, 
         { opacity: 0 }

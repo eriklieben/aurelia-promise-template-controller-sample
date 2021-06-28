@@ -33,7 +33,7 @@
         </div>
 
         <h2>List of people that takes 200ms to load</h2>
-        <p>Only show the loading skelethon when loading data takes more than 300ms</p>
+        <p>Only show the loading skelethon when loading data takes more than 300ms; don't show a flash of the skeleton before that</p>
         <div ref="readerslistQuick" class="readerslist" promise.bind="profileDataQuickPromise">
             <template pending repeat.for="i of [1,2,3]">
                 <div class="row" data-row-number.bind="i">
