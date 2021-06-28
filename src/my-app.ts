@@ -7,7 +7,7 @@ export class MyApp {
   public readerslist: HTMLDivElement;
   public readerslistQuick: HTMLDivElement;
 
-  public binding() {
+  public attached() {
     this.profileDataPromise = this.getProfileDataAsync(2000, this.readerslist);
     this.profileDataQuickPromise = this.getProfileDataAsync(200, this.readerslistQuick);
   }
