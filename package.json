@@ -8,11 +8,11 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "aurelia": "latest"
+    "aurelia": "2.0.0-alpha.12"
   },
   "devDependencies": {
     "eslint": "^7.29.0",
-    "@aurelia/testing": "latest",
+    "@aurelia/testing": "2.0.0-alpha.12",
     "htmlhint": "^0.15.1",
     "rimraf": "^3.0.2",
     "webpack": "^5.39.1",
@@ -24,7 +24,7 @@
     "file-loader": "^6.2.0",
     "style-loader": "^2.0.0",
     "css-loader": "^5.2.6",
-    "@aurelia/webpack-loader": "latest",
+    "@aurelia/webpack-loader": "2.0.0-alpha.12",
     "ts-loader": "^9.2.3",
     "postcss-loader": "^6.1.0",
     "postcss": "^8.3.5",

@@ -1,5 +1,4 @@
-<import from="./skeleton-loader.html"></import>
-
+<import from="./skeleton-loader"></import>
 <article>
     <main> 
         <h1>Aurelia loading skeleton with new promise template controller</h1> 
@@ -14,15 +13,17 @@
         <h2>List of people that takes 2s to load</h2>
         <p>Show the loading skeleton when loading time is more than 300ms</p>
         <skeleton-loader promise-value.bind="profileDataPromise" type="profile">      
-            <ul au-slot>
+            <ul au-slot aria-busy="false">
                 <li class="row profile loaded" repeat.for="person of items">
                     <img class="avatar" src.bind="person.profileImageUrl" />
-                    <div class="line">
-                        <strong>${person.name}</strong>
-                    </div>
-                    <div class="line">
-                        <span>${person.description}</span>
-                    </div>
+                    <!-- <div class="line">
+                        
+                    </div> -->
+                    <strong class="line">${person.name}</strong>
+                    <span class="line">${person.description}</span>
+                    <!-- <div class="line">
+                        
+                    </div> -->
                 </li>
             </ul>
         </skeleton-loader>

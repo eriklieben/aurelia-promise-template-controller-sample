@@ -14,3 +14,31 @@ Aurelia
   */
   .app(MyApp)
   .start();
+
+
+  import { ILifecycleHooks, lifecycleHooks } from 'aurelia';
+
+@lifecycleHooks()
+export class AnimatorHooks implements ILifecycleHooks {
+
+  constructor() {
+    console.log('animator hook console log in ctor');
+  }
+
+  public created() {
+    console.log('created'); 
+  }
+
+
+  public attaching(vm) {
+    console.log('attaching');
+    return vm.$controller.host.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250 }).finished;
+  }
+  public detaching(vm) {
+    console.log('detaching');
+    return vm.$controller.host.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250 }).finished;
+  }
+}
+
+
+Aurelia.register(AnimatorHooks);

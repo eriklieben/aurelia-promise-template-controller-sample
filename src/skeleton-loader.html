@@ -1,20 +1,21 @@
+<import from="./animatorHooks"></import>
+
 <bindable name="promiseValue"></bindable>
 <bindable name="type"></bindable>
 
-<div class="list" promise.bind="promiseValue">
-    <template pending repeat.for="i of [1,2,3]">
-        <au-slot name="skeleton">
+<div ref="list" class="list" promise.bind="promiseValue">
+    <template pending>
+        <au-slot name="skeleton" repeat.for="i of [1,2,3]">
             <template switch.bind="type">
-                <div case="profile" class="row pending profile">
+                <div case="profile" class="row pending profile" aria-busy="true">
                     <div class="avatar"></div>
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
-
                 <div default-case class="row pending big-box-loader"></div>
             </template>
-
         </au-slot>
+        <span class="visually-hidden">Loading people</span>
     </template>
 
     <au-slot then.from-view="items"></au-slot>
